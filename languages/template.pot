@@ -1,0 +1,195 @@
+# Translation for the Conditional Elements plugin for Omeka.
+# Copyright (C) 2015 Gero Zahn
+# This file is distributed under the same license as the Omeka package.
+# Gero Zahn <gero.zahn@upb.de>, 2015.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ConditionalElements\n"
+"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ConditionalElements/"
+"issues\n"
+"POT-Creation-Date: 2012-01-09 21:49-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Gero Zahn<gero.zahn@upb.de>\n"
+"Language-Team: en_US <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ConditionalElementsPlugin.php:46
+msgid "Conditional Elements"
+msgstr ""
+
+#: controllers/IndexController.php:90
+msgid "The dependent is successfully added."
+msgstr ""
+
+#: controllers/IndexController.php:94
+msgid "Term is missing."
+msgstr ""
+
+#: controllers/IndexController.php:99
+msgid "One of the dependencies is missing."
+msgstr ""
+
+#: controllers/IndexController.php:103
+msgid "There were errors in creating the dependency. No JSON is available."
+msgstr ""
+
+#: controllers/IndexController.php:138
+msgid "The dependent is successfully deleted."
+msgstr ""
+
+#: controllers/IndexController.php:141
+msgid "No dependent is available to delete"
+msgstr ""
+
+#: controllers/IndexController.php:145
+msgid "There were errors in deleting the dependency."
+msgstr ""
+
+#: views/admin/index/add.php:2 views/admin/index/dependee.php:2
+#: views/admin/index/index.php:5 views/admin/index/index.php:95
+#: views/admin/index/save.php:2 views/admin/index/term.php:2
+msgid "Add Dependency"
+msgstr ""
+
+#: views/admin/index/add.php:12
+msgid "Step 1: Select Dependent for Dependency"
+msgstr ""
+
+#: views/admin/index/add.php:14
+msgid ""
+"Choose a dependent element from the list below that should become visible or "
+"hidden based on the selection for some other element."
+msgstr ""
+
+#: views/admin/index/add.php:16
+msgid ""
+"<em>Please note:</em> One element can be dependent only from one other "
+"element."
+msgstr ""
+
+#: views/admin/index/add.php:20 views/admin/index/confirm.php:47
+#: views/admin/index/dependee.php:74 views/admin/index/index.php:12
+#: views/admin/index/term.php:56
+msgid "Dependent"
+msgstr ""
+
+#: views/admin/index/add.php:51 views/admin/index/dependee.php:82
+msgid "Next"
+msgstr ""
+
+#: views/admin/index/confirm.php:2 views/admin/index/delete.php:2
+msgid "Delete Dependency"
+msgstr ""
+
+#: views/admin/index/confirm.php:42
+msgid "Are you sure you wish to delete this dependency?"
+msgstr ""
+
+#: views/admin/index/confirm.php:45 views/admin/index/dependee.php:70
+#: views/admin/index/index.php:10 views/admin/index/term.php:47
+msgid "Dependee"
+msgstr ""
+
+#: views/admin/index/confirm.php:46 views/admin/index/index.php:11
+#: views/admin/index/term.php:48
+msgid "Term"
+msgstr ""
+
+#: views/admin/index/confirm.php:58
+msgid ""
+"Dependency element names of dependency that should be deleted not found."
+msgstr ""
+
+#: views/admin/index/confirm.php:60
+msgid "Dependency that should be deleted not found."
+msgstr ""
+
+#: views/admin/index/confirm.php:62
+msgid "No dependency given that could be deleted."
+msgstr ""
+
+#: views/admin/index/delete.php:9
+msgid "You have successfully deleted the dependency."
+msgstr ""
+
+#: views/admin/index/delete.php:15 views/admin/index/dependee.php:83
+#: views/admin/index/dependee.php:91 views/admin/index/save.php:22
+#: views/admin/index/save.php:32 views/admin/index/term.php:64
+#: views/admin/index/term.php:73
+msgid "Back"
+msgstr ""
+
+#: views/admin/index/dependee.php:30
+msgid "Step 2: Select Dependee for Dependency"
+msgstr ""
+
+#: views/admin/index/dependee.php:32
+msgid ""
+"Choose a dependee element from the list below that will, based on the "
+"selection, will affect the dependent element to become visible or hidden."
+msgstr ""
+
+#: views/admin/index/dependee.php:34
+msgid ""
+"<em>Please note:</em> You will need to supply a list of possible selections "
+"via \"Simple Vocabulary\" to an element to become a possible dependee."
+msgstr ""
+
+#: views/admin/index/dependee.php:36
+msgid ""
+"<em>Please note:</em> One dependee can affect multiple dependents, based on "
+"multiple values to choose from."
+msgstr ""
+
+#: views/admin/index/dependee.php:81
+msgid "Previous"
+msgstr ""
+
+#: views/admin/index/dependee.php:90
+msgid "Please choose a dependent to proceed."
+msgstr ""
+
+#: views/admin/index/index.php:2
+msgid "Browse Conditional Elements"
+msgstr ""
+
+#: views/admin/index/index.php:13
+msgid "Actions"
+msgstr ""
+
+#: views/admin/index/index.php:64 views/admin/index/index.php:65
+#: views/admin/index/index.php:66 views/admin/index/index.php:67
+msgid "[n/a]"
+msgstr ""
+
+#: views/admin/index/save.php:21
+msgid "No term is selected. Please try creating the dependency again."
+msgstr ""
+
+#: views/admin/index/save.php:25
+msgid "You have successfully saved the dependency."
+msgstr ""
+
+#: views/admin/index/term.php:40
+msgid "Step 3: Select Dependee Value to Affect Dependent"
+msgstr ""
+
+#: views/admin/index/term.php:42
+msgid ""
+"Choose one of the dependee element's possible values. If this value is "
+"selected, the dependent element will become visible; otherwise, it will be "
+"hidden."
+msgstr ""
+
+#: views/admin/index/term.php:63
+msgid "Save"
+msgstr ""
+
+#: views/admin/index/term.php:72
+msgid "Please choose a dependee to proceed."
+msgstr ""
