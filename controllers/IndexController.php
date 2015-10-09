@@ -19,7 +19,7 @@ class ConditionalElements_IndexController extends Omeka_Controller_AbstractActio
   public function indexAction() {
     $this->_helper->db->setDefaultModelName('ConditionalElements');
     $json=get_option('conditional_elements_dependencies');
-    if (!$json) { $json="null"; } else { $json = $this->_removeOutdatedDependencies($json); }
+    if (!$json) { $json="[]"; } else { $json = $this->_removeOutdatedDependencies($json); }
   }
 
   /**
@@ -59,10 +59,10 @@ class ConditionalElements_IndexController extends Omeka_Controller_AbstractActio
     if ($this->getRequest()->isPost()) {
       try{
         $json=get_option('conditional_elements_dependencies');
-        if (!$json) { $json="null"; } else { $json = $this->_removeOutdatedDependencies($json); }
+        if (!$json) { $json="[]"; } else { $json = $this->_removeOutdatedDependencies($json); }
         $dependencies = json_decode($json,true);
         //check if json is There
-        if ($dependencies)
+        if (is_array($dependencies))
         {
           //check for integer values
           $dependent = intval($_POST['dependent']);
@@ -117,10 +117,10 @@ class ConditionalElements_IndexController extends Omeka_Controller_AbstractActio
   {
     try{
       $json=get_option('conditional_elements_dependencies');
-      if (!$json) { $json="null"; } else { $json = $this->_removeOutdatedDependencies($json); }
+      if (!$json) { $json="[]"; } else { $json = $this->_removeOutdatedDependencies($json); }
       $json_obj = json_decode($json,true);
       //check if json is There
-      if ($json_obj) {
+      if (is_array($json_obj)) {
       // check for integer values
       $dependent_id = intval($_GET['dependent_id']);
       // check if id is there

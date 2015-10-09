@@ -43,20 +43,11 @@ if (isset($_GET['dependee'])) { $def_dependee_id = intval($_GET['dependee']); }
             if (!$json) { $json="null"; }
             $dependencies = json_decode($json,true);
 
-            $whereClause = "";
-            if ($dependencies) {
-              $ids = array();
-              foreach ($dependencies as $d) { $ids[]=$d[0]; }
-              $ids=array_unique($ids);
-              $ids_verb = implode(",",$ids);
-              $whereClause = "WHERE es.id NOT in ($ids_verb)";
-            }
-
             $select = "SELECT es.name AS name, es.id AS id, e.element_id AS vocab_id
                        FROM {$db->Element} es
                        JOIN {$db->SimpleVocabTerm} e
                        ON es.id = e.element_id
-                       $whereClause
+                       WHERE es.id <> $dependent_id
                        ORDER BY name";
             $db = get_db();
             $results = $db->fetchAll($select);

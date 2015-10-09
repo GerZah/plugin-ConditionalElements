@@ -11,9 +11,31 @@ class ConditionalElementsPlugin extends Omeka_Plugin_AbstractPlugin {
 	*/
 	protected $_hooks = array(
 		'initialize',
+		'install',
+		'uninstall',
 		'admin_head', // embed our jQuery code when adding / editing objects
 		'define_acl',
 	);
+
+  protected $_options = array(
+    'conditional_elements_dependencies' => "[]",
+  );
+
+  /**
+  * Install the plugin.
+  */
+  public function hookInstall() {
+
+    SELF::_installOptions();
+  }
+
+  /**
+  * Uninstall the plugin.
+  */
+  public function hookUninstall() {
+
+    SELF::_uninstallOptions();
+  }
 
 	/**
 	* @var array This plugin's filters.
@@ -71,7 +93,7 @@ class ConditionalElementsPlugin extends Omeka_Plugin_AbstractPlugin {
 			// Retrieve dependencies from Database
 			/* */
 			$json=get_option('conditional_elements_dependencies');
-			if (!$json) { $json="null"; } # else { $json = $this->_removeOutdatedDependencies($json); }
+			if (!$json) { $json="[]"; } # else { $json = $this->_removeOutdatedDependencies($json); }
 			/* */
 
 			echo "<script>var conditionalElementsDep=$json;</script>";
