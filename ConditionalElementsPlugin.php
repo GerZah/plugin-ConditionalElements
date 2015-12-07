@@ -1,5 +1,9 @@
 <?php
 
+// Include global helper functions to be accessible from within all objects
+define('CONDITIONALELEMENTSFILES_DIR',dirname(__FILE__));
+require_once CONDITIONALELEMENTSFILES_DIR.'/helpers/ConditionalElementsHelpers.php';
+
 /**
 * ConditionalElements plugin.
 *
@@ -82,8 +86,9 @@ class ConditionalElementsPlugin extends Omeka_Plugin_AbstractPlugin {
 		$action = $request->getActionName();
 
 		if ($module === 'default' &&
-		$controller === 'items' &&
-		in_array($action, array('add',  'edit'))) {
+				$controller === 'items' &&
+				in_array($action, array('add',  'edit')) )
+		{
 
 			// ------------------------------------------
 			// An array of dependencies:

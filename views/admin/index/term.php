@@ -70,7 +70,7 @@ echo flash();
 }
 else {
   echo "<h3>".__('Please choose a dependee to proceed.')."</h3>\n"; ?>
- <a href="<?php echo $backURL; ?>" class="green button" ><?php echo __('Back'); ?></a> 
-  <?  }  ?>
+ <a href="<?php echo $backURL; ?>" class="green button" ><?php echo __('Back'); ?></a>
+  <?php  }  ?>
 </form>
 <?php echo foot(); ?>

@@ -43,19 +43,42 @@ if (isset($_GET['dependee'])) { $def_dependee_id = intval($_GET['dependee']); }
             if (!$json) { $json="null"; }
             $dependencies = json_decode($json,true);
 
-            $select = "SELECT es.name AS name, es.id AS id, e.element_id AS vocab_id
-                       FROM {$db->Element} es
-                       JOIN {$db->SimpleVocabTerm} e
-                       ON es.id = e.element_id
-                       WHERE es.id <> $dependent_id
-                       ORDER BY name";
-            $db = get_db();
-            $results = $db->fetchAll($select);
+            $validElementSets = conditionalElementsValidElementSets();
+            $elementSetsClause = ( $validElementSets ?
+                                        "AND e.element_set_id in (".implode(",", $validElementSets).")"
+                                        : "" );
 
+            // $select = "SELECT es.name AS name, es.id AS id, e.element_id AS vocab_id
+            //            FROM {$db->Element} es
+            //            JOIN {$db->SimpleVocabTerm} e
+            //            ON es.id = e.element_id
+            //            WHERE es.id <> $dependent_id $elementSetsClause
+            //            ORDER BY name";
+            # echo "<pre>$select</pre>";
+            $db = get_db();
+            $select = "
+            SELECT es.name AS element_set_name, e.id AS element_id,
+            e.name AS element_name, it.name AS item_type_name
+            FROM {$db->ElementSet} es
+            JOIN {$db->Element} e ON es.id = e.element_set_id
+            JOIN {$db->SimpleVocabTerm} s ON e.id = s.element_id
+            LEFT JOIN {$db->ItemTypesElements} ite ON e.id = ite.element_id
+            LEFT JOIN {$db->ItemType} it ON ite.item_type_id = it.id
+            WHERE es.id <> $dependent_id $elementSetsClause
+            ORDER BY e.name";
+            $elements = $db->fetchAll($select);
             $dependee = array(0 => __('Select Below'));
-            foreach($results as $result) {
-              $dependee[$result['id']] = $result['name'];
+            foreach ($elements as $element) {
+                $optGroup = $element['item_type_name']
+                          ? __('Item Type') . ': ' . __($element['item_type_name'])
+                          : __($element['element_set_name']);
+                $value = __($element['element_name']);
+                $dependee[$optGroup][$element['element_id']] = $value;
             }
+            #$dependee = array(0 => __('Select Below'));
+            #foreach($results as $result) {
+              #$dependee[$result['id']] = $result['name'];
+            #}
 
             echo "<tr><th>".__("Dependee").":</th>\n<td>\n".
                  $this->formSelect('dependee', $def_dependee_id , array(), $dependee).
@@ -79,6 +102,6 @@ if (isset($_GET['dependee'])) { $def_dependee_id = intval($_GET['dependee']); }
   else {
     echo "<h3>".__('Please choose a dependent to proceed.')."</h3>\n"; ?>
     <a href="<?php echo $backURL; ?>" class="green button" ><?php echo __('Back'); ?></a>
-    <?  }  ?>
+    <?php  }  ?>
   </form>
   <?php echo foot(); ?>

@@ -30,16 +30,50 @@ if (isset($_GET['dependent'])) { $def_dependent_id = intval($_GET['dependent']);
             foreach ($dependencies as $d) { $ids[]=$d[2]; }
             $ids = array_unique($ids);
             $ids_verb = implode(",", $ids);
-            $whereClause = "WHERE id NOT in ($ids_verb)";
+            $whereClause = "WHERE e.id NOT in ($ids_verb)";
+          }
+
+          $elementSetsClause = "";
+          $validElementSets = conditionalElementsValidElementSets();
+          if ($validElementSets) {
+            $elementSetsClause = "e.element_set_id in (".implode(",", $validElementSets).")";
+            if ($whereClause) {
+              $whereClause .= " AND ".$elementSetsClause;
+            }
+            else {
+              $whereClause = "WHERE ".$elementSetsClause;
+            }
           }
 
           $db = get_db();
-          $select = "SELECT id, name FROM `$db->Element` $whereClause ORDER BY name";
-          $results = $db->fetchAll($select);
+          #$select = "SELECT id, name FROM `$db->Element` $whereClause ORDER BY name";
+          # echo "<pre>$select</pre>";
+          #$results = $db->fetchAll($select);
 
+          #$dependent = array(0 => __('Select Below'));
+          #foreach($results as $result) { $dependent[$result['id']] = $result['name']; }
+          #echo $this->formSelect('dependent', $def_dependent_id, array(), $dependent);
+
+          $select = "
+          SELECT es.name AS element_set_name, e.id AS element_id,
+          e.name AS element_name, it.name AS item_type_name
+          FROM {$db->ElementSet} es
+          JOIN {$db->Element} e ON es.id = e.element_set_id
+          LEFT JOIN {$db->ItemTypesElements} ite ON e.id = ite.element_id
+          LEFT JOIN {$db->ItemType} it ON ite.item_type_id = it.id
+          $whereClause
+          ORDER BY e.name";
+          $elements = $db->fetchAll($select);
           $dependent = array(0 => __('Select Below'));
-          foreach($results as $result) { $dependent[$result['id']] = $result['name']; }
-          echo $this->formSelect('dependent', $def_dependent_id, array(), $dependent);
+          foreach ($elements as $element) {
+              $optGroup = $element['item_type_name']
+                        ? __('Item Type') . ': ' . __($element['item_type_name'])
+                        : __($element['element_set_name']);
+              $value = __($element['element_name']);
+              $dependent[$optGroup][$element['element_id']] = $value;
+          }
+          echo $this->formSelect('dependent', $def_dependent_id , array(), $dependent);
+
           ?>
         </td></tr>
         </tbody>
