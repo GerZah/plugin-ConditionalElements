@@ -89,8 +89,6 @@ jQuery(document).ready(function()
   function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
 });
 </script>
-<script src="/javascript/jquery-1.7.1.min.js"></script>
-<script src="/javascript/configuration.js"></script>
 <div class="table-actions">
   <a href="<?php echo html_escape(url('conditional-elements/index/add')); ?>" class="add green button"><?php echo __('Add Dependency'); ?></a>
 </div>

@@ -43,7 +43,7 @@ if (isset($_GET['dependee'])) { $def_dependee_id = intval($_GET['dependee']); }
             if (!$json) { $json="null"; }
             $dependencies = json_decode($json,true);
 
-            $validElementSets = conditionalElementsValidElementSets();
+            $validElementSets = ConditionalElementsPlugin::conditionalElementsValidElementSets();
             $elementSetsClause = ( $validElementSets ?
                                         "AND e.element_set_id in (".implode(",", $validElementSets).")"
                                         : "" );

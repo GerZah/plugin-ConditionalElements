@@ -1,9 +1,5 @@
 <?php
 
-// Include global helper functions to be accessible from within all objects
-define('CONDITIONALELEMENTSFILES_DIR',dirname(__FILE__));
-require_once CONDITIONALELEMENTSFILES_DIR.'/helpers/ConditionalElementsHelpers.php';
-
 /**
 * ConditionalElements plugin.
 *
@@ -107,5 +103,20 @@ class ConditionalElementsPlugin extends Omeka_Plugin_AbstractPlugin {
 			queue_js_file('conditionalelements');
 		} # if ($module === 'default' ...
 	} # public function hookAdminHead()
+
+	/**
+	 * Deliver element set IDs that are suitable to become dependent / dependee elements
+	 * i.e. 1 (for Dublin Core elements) and (usually) 3 (for metadata elements)
+	 */
+	public function conditionalElementsValidElementSets() {
+	  $db = get_db();
+	  $query = "SELECT id FROM `$db->ElementSets`".
+	            " WHERE name='Dublin Core'".
+	            " OR (record_type='Item' and name='Item Type Metadata')";
+	  $ids = $db->fetchAll($query);
+	  $result = array();
+	  foreach($ids as $id) { $result[] = $id["id"]; }
+	  return $result;
+	}
 
 } # class

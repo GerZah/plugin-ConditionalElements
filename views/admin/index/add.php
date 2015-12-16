@@ -34,7 +34,7 @@ if (isset($_GET['dependent'])) { $def_dependent_id = intval($_GET['dependent']);
           }
 
           $elementSetsClause = "";
-          $validElementSets = conditionalElementsValidElementSets();
+          $validElementSets = ConditionalElementsPlugin::conditionalElementsValidElementSets();
           if ($validElementSets) {
             $elementSetsClause = "e.element_set_id in (".implode(",", $validElementSets).")";
             if ($whereClause) {
