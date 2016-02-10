@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WeSa Omeka\n"
-"Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ConditionalElements/issues\n"
+"Report-Msgid-Bugs-To: http://github.com/GerZah/plugin-ConditionalElements/issues\n"
 "POT-Creation-Date: 2012-01-09 21:49-0500\n"
-"PO-Revision-Date: 2015-11-23 11:40+0100\n"
-"Last-Translator: Gero Zahn <gerozahn@campus.uni-paderborn.de>\n"
+"PO-Revision-Date: 2016-02-10 14:16+0100\n"
+"Last-Translator: githanjalli <anjallinhere@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/upb/wesa-omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 
-#: ConditionalElementsPlugin.php:46
+#: ConditionalElementsPlugin.php:68
 msgid "Conditional Elements"
 msgstr "Abhängige Elemente"
 
@@ -51,7 +51,7 @@ msgstr "Kein abhängiges Element zum Löschen vorhanden."
 msgid "There were errors in deleting the dependency."
 msgstr "Fehler beim Löschen der Abhängigkeit."
 
-#: views/admin/index/add.php:2 views/admin/index/dependee.php:2 views/admin/index/index.php:5 views/admin/index/index.php:95 views/admin/index/save.php:2 views/admin/index/term.php:2
+#: views/admin/index/add.php:2 views/admin/index/dependee.php:2 views/admin/index/index.php:5 views/admin/index/index.php:93 views/admin/index/save.php:2 views/admin/index/term.php:2
 msgid "Add Dependency"
 msgstr "Abhängigkeit hinzufügen"
 
@@ -67,11 +67,11 @@ msgstr "Bitte wählen Sie ein abhängiges Element aus der unten stehenden Liste,
 msgid "<em>Please note:</em> One element can be dependent only from one other element."
 msgstr "<em>Bitte beachten:</em> Ein Element kann nur abhängig von genau einem anderen Element sein."
 
-#: views/admin/index/add.php:20 views/admin/index/confirm.php:47 views/admin/index/dependee.php:74 views/admin/index/index.php:12 views/admin/index/term.php:56
+#: views/admin/index/add.php:20 views/admin/index/confirm.php:47 views/admin/index/dependee.php:87 views/admin/index/index.php:12 views/admin/index/term.php:56
 msgid "Dependent"
 msgstr "Abhängiges Element"
 
-#: views/admin/index/add.php:51 views/admin/index/dependee.php:82
+#: views/admin/index/add.php:85 views/admin/index/dependee.php:95
 msgid "Next"
 msgstr "Weiter"
 
@@ -83,7 +83,7 @@ msgstr "Abhängigkeit löschen"
 msgid "Are you sure you wish to delete this dependency?"
 msgstr "Sind Sie sicher, dass Sie diese Abhängigkeit löschen wollen?"
 
-#: views/admin/index/confirm.php:45 views/admin/index/dependee.php:70 views/admin/index/index.php:10 views/admin/index/term.php:47
+#: views/admin/index/confirm.php:45 views/admin/index/dependee.php:83 views/admin/index/index.php:10 views/admin/index/term.php:47
 msgid "Dependee"
 msgstr "Verantwortliches Element"
 
@@ -107,7 +107,7 @@ msgstr "Keine zu löschende Abhängigkeit angegeben."
 msgid "You have successfully deleted the dependency."
 msgstr "Die Abhängigkeit wurde erfolgreich gelöscht."
 
-#: views/admin/index/delete.php:15 views/admin/index/dependee.php:83 views/admin/index/dependee.php:91 views/admin/index/save.php:22 views/admin/index/save.php:32 views/admin/index/term.php:64
+#: views/admin/index/delete.php:15 views/admin/index/dependee.php:96 views/admin/index/dependee.php:104 views/admin/index/save.php:22 views/admin/index/save.php:33 views/admin/index/term.php:64
 #: views/admin/index/term.php:73
 msgid "Back"
 msgstr "Zurück"
@@ -128,11 +128,11 @@ msgstr "<em>Bitte beachten:</em> Um ein Element als verantwortliches Element aus
 msgid "<em>Please note:</em> One dependee can affect multiple dependents, based on multiple values to choose from."
 msgstr "<em>Bitte beachten:</em> Ein verantwortliches Element kann mit verschiedenen Auswahlen mehrere abhängige Elemente beeinflussen."
 
-#: views/admin/index/dependee.php:81
+#: views/admin/index/dependee.php:94
 msgid "Previous"
 msgstr "Vorheriges"
 
-#: views/admin/index/dependee.php:90
+#: views/admin/index/dependee.php:103
 msgid "Please choose a dependent to proceed."
 msgstr "Bitte wählen Sie zum Fortfahren ein abhängiges Element."
 
